@@ -1,0 +1,10 @@
+<svg id="ic_power_icon" data-name="ic power icon" xmlns="http://www.w3.org/2000/svg" width="179.266" height="179.266" viewBox="0 0 179.266 179.266">
+  <g id="circle" fill="#0f142f" stroke="#4ccf8b" stroke-width="3">
+    <circle cx="89.633" cy="89.633" r="89.633" stroke="none"/>
+    <circle cx="89.633" cy="89.633" r="88.133" fill="none"/>
+  </g>
+  <g id="turn-off_icon" data-name="turn-off icon" transform="translate(59.45 54.716)">
+    <path id="Path_8" data-name="Path 8" d="M63.339,60.625a2.779,2.779,0,0,0-3.592,1.344,2.561,2.561,0,0,0,1.408,3.43A23.438,23.438,0,0,1,75.89,86.892c0,12.946-10.993,23.443-24.551,23.443S26.787,99.84,26.787,86.892A23.442,23.442,0,0,1,41.517,65.4a2.561,2.561,0,0,0,1.406-3.43,2.779,2.779,0,0,0-3.592-1.343,28.648,28.648,0,0,0-18,26.267c0,15.825,13.434,28.652,30.007,28.652s30.007-12.829,30.007-28.652A28.644,28.644,0,0,0,63.339,60.625Z" transform="translate(-21.331 -53.031)" fill="#4ccf8b" stroke="#0f142f" stroke-width="2"/>
+    <path id="Path_9" data-name="Path 9" d="M237.261,28.652a2.6,2.6,0,0,0,2.6-2.6V2.6a2.6,2.6,0,1,0-5.209,0V26.047A2.6,2.6,0,0,0,237.261,28.652Z" transform="translate(-207.245)" fill="#4ccf8b" stroke="#0f142f" stroke-width="1"/>
+  </g>
+</svg>

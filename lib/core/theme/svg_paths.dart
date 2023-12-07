@@ -1,0 +1,19 @@
+
+const downloadSVG="assets/ic_download.svg";
+const uploadSVG="assets/ic_upload.svg";
+const openButtonSVG="assets/ic_open_button.svg";
+const openButtonDeactivateSVG="assets/ic_open_button_deactive.svg";
+const connected2SVG="assets/ic_connected2.svg";
+const connectedSVG="assets/ic_connected.svg";
+const disconnectedSVG="assets/ic_connected2.svg";
+const disconnectSVG="assets/ic_disconnect.svg";
+const pinSVG="assets/ic_pin.svg";
+const splashSVG="assets/ic_splash_screen_logo.svg";
+const cancelSVG="assets/ic_cancel_modal.svg";
+const disconnectModalSVG="assets/ic_disconnect_modal.svg";
+const drawerLogoSVG="assets/ic_drawer_logo.svg";
+const drawerHelpSVG="assets/ic_drawer_help.svg";
+const drawerAboutSVG="assets/ic_drawer_about.svg";
+const drawerRateSVG="assets/ic_drawer_rate.svg";
+const drawerShareSVG="assets/ic_drawer_share.svg";
+const drawerButtonSVG="assets/ic_drawer_button.svg";

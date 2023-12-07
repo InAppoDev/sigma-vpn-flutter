@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="21.538" viewBox="0 0 24 21.538">
+  <g id="ic_burger_menu" data-name="ic burger menu" transform="translate(0 -26.256)">
+    <path id="Path_10" data-name="Path 10" d="M22.462,29.408H1.538a1.576,1.576,0,0,1,0-3.152H22.462a1.576,1.576,0,0,1,0,3.152Z" fill="#c4d9fd"/>
+    <path id="Path_11" data-name="Path 11" d="M14.182,226.331H1.576a1.576,1.576,0,1,1,0-3.152H14.182a1.576,1.576,0,1,1,0,3.152Z" transform="translate(0 -187.468)" fill="#c4d9fd"/>
+    <path id="Path_12" data-name="Path 12" d="M397.943,226.331h-2.521a1.576,1.576,0,1,1,0-3.152h2.521a1.576,1.576,0,0,1,0,3.152Z" transform="translate(-375.519 -187.73)" fill="#2d50a7"/>
+    <path id="Path_13" data-name="Path 13" d="M22.462,423.254H1.538a1.576,1.576,0,0,1,0-3.152H22.462a1.576,1.576,0,0,1,0,3.152Z" transform="translate(0 -375.459)" fill="#c4d9fd"/>
+  </g>
+</svg>

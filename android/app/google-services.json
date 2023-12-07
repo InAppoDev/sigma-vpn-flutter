@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "448127724484",
+    "firebase_url": "https://sigmavpnservice.firebaseio.com",
+    "project_id": "sigmavpnservice",
+    "storage_bucket": "sigmavpnservice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448127724484:android:63b6cd24d670fb49b59291",
+        "android_client_info": {
+          "package_name": "com.sigma.vpn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448127724484-fgc2hrnhgovaodg0tan1eg9aul6dn1k6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sigma.vpn",
+            "certificate_hash": "4180808b5e33717811756a2336e0c635093a0169"
+          }
+        },
+        {
+          "client_id": "448127724484-vl61rb5hma5bhkrkbq2h6d9s0gesmud4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sigma.vpn",
+            "certificate_hash": "22f739ee4e0913b1536b89e9682d948a82a157f7"
+          }
+        },
+        {
+          "client_id": "448127724484-ealfpba2kjlhpsu312t73vnd632ld3tp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgNSFOjhpimiw6uB45dTb0E9rXzTOu1Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448127724484-ealfpba2kjlhpsu312t73vnd632ld3tp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "448127724484-3fc4lfr8g482a9ohdcqah2oesemroo0i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sigma.vpn"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
