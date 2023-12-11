@@ -24,15 +24,15 @@ class NavigationDrawerWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: screenHeightRatio(36),
+                height: screenHeightRatio(36, context),
               ),
               SvgPicture.asset(
                 drawerLogoSVG,
-                height: screenHeightRatio(90),
+                height: screenHeightRatio(90, context),
                 width: 77,
               ),
               SizedBox(
-                height: screenHeightRatio(15),
+                height: screenHeightRatio(15, context),
               ),
               Text(
                 "SIGMA VPN",
@@ -44,7 +44,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                 color: white,
               ),
               SizedBox(
-                height: screenHeightRatio(30),
+                height: screenHeightRatio(30, context),
               ),
               NavigationItem(
                   title: Languages.of(context)!.drawer_help,

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:sigmavpnflutter/core/presentation/pages/home_page.dart';
 import 'package:sigmavpnflutter/core/theme/colors.dart';
 import 'package:sigmavpnflutter/core/theme/text_styles.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -45,8 +46,8 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 Image.asset(
                   "assets/ic_splash_screen.png",
-                  height: screenHeightRatio(300),
-                  width: screenWidthRatio(300),
+                  height: screenHeightRatio(300, context),
+                  width: screenWidthRatio(300, context),
                 ),
 
               ],

@@ -28,11 +28,11 @@ class EmptyStateWidget extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 pinSVG,
-                height: screenHeightRatio(14),
-                width: screenWidthRatio(10),
+                height: screenHeightRatio(14, context),
+                width: screenWidthRatio(10, context),
               ),
               SizedBox(
-                width: screenWidthRatio(5),
+                width: screenWidthRatio(5, context),
               ),
               Flexible (
                 child: Text(
@@ -46,16 +46,16 @@ class EmptyStateWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: screenHeightRatio(2),),
+        SizedBox(height: screenHeightRatio(2, context),),
         CupertinoButton(
             child: SvgPicture.asset(
               openButtonDeactivateSVG,
-              height: screenHeightRatio(196),
-              width: screenWidthRatio(196),
+              height: screenHeightRatio(196, context),
+              width: screenWidthRatio(196, context),
             ),
             onPressed: () {engine.disconnect();}),
         SizedBox(
-          height: screenHeightRatio(73),
+          height: screenHeightRatio(73, context),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +64,7 @@ class EmptyStateWidget extends StatelessWidget {
               color: circularIndicatorColor,
             ),
             SizedBox(
-              width: screenWidthRatio(8),
+              width: screenWidthRatio(8, context),
             ),
             Text(
               status==Languages.of(context)!.home_disconnecting?Languages.of(context)!.home_disconnecting:

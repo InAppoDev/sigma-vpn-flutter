@@ -16,8 +16,8 @@ class DownloadAndUploadRow extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: screenWidthRatio(320),
-      height: screenHeightRatio(53),
+      width: screenWidthRatio(320, context),
+      height: screenHeightRatio(53, context),
       decoration: BoxDecoration(
           border: Border.all(color: primaryColor),
           borderRadius: BorderRadius.circular(16)),
@@ -30,11 +30,11 @@ class DownloadAndUploadRow extends StatelessWidget
               children: [
                 SvgPicture.asset(
                   downloadSVG,
-                  height: screenHeightRatio(24),
-                  width: screenWidthRatio(24),
+                  height: screenHeightRatio(24, context),
+                  width: screenWidthRatio(24, context),
                 ),
                 SizedBox(
-                  width: screenWidthRatio(16),
+                  width: screenWidthRatio(16, context),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -55,10 +55,10 @@ class DownloadAndUploadRow extends StatelessWidget
             ),
             VerticalDivider(
               color: Colors.white,
-              endIndent: screenHeightRatio(10),
-              indent: screenHeightRatio(10),
-              width: screenWidthRatio(4),
-              thickness: screenWidthRatio(1),
+              endIndent: screenHeightRatio(10, context),
+              indent: screenHeightRatio(10, context),
+              width: screenWidthRatio(4, context),
+              thickness: screenWidthRatio(1, context),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -66,11 +66,11 @@ class DownloadAndUploadRow extends StatelessWidget
               children: [
                 SvgPicture.asset(
                   uploadSVG,
-                  height: screenHeightRatio(24),
-                  width: screenWidthRatio(24),
+                  height: screenHeightRatio(24, context),
+                  width: screenWidthRatio(24, context),
                 ),
                 SizedBox(
-                  width: screenWidthRatio(16),
+                  width: screenWidthRatio(16, context),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,

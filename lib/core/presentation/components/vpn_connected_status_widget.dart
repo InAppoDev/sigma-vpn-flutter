@@ -30,8 +30,8 @@ class VpnConnectedStatusWidget extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 pinSVG,
-                height: screenHeightRatio(14),
-                width: screenWidthRatio(10),
+                height: screenHeightRatio(14, context),
+                width: screenWidthRatio(10, context),
               ),
               Flexible(
                 child: Text(
@@ -50,21 +50,21 @@ class VpnConnectedStatusWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: screenHeightRatio(18),
+          height: screenHeightRatio(18, context),
         ),
         SvgPicture.asset(
           connected2SVG,
-          height: screenHeightRatio(190),
+          height: screenHeightRatio(190, context),
           width: screenWidthRatio(
-            152,
+            152, context
           ),
         ),
         SizedBox(
-          height: screenHeightRatio(34),
+          height: screenHeightRatio(34, context),
         ),
         SizedBox(
-            height: screenHeightRatio(24),
-            width: screenWidthRatio(110),
+            height: screenHeightRatio(24, context),
+            width: screenWidthRatio(110, context),
             child: CupertinoButton(
               padding: const EdgeInsets.all(0),
               child: Text(
@@ -87,8 +87,8 @@ class VpnConnectedStatusWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                               disconnectModalSVG,
-                              height: screenHeightRatio(24),
-                              width: screenWidthRatio(24),
+                              height: screenHeightRatio(24, context),
+                              width: screenWidthRatio(24, context),
                             ),
                             title: Text(Languages.of(context)!.home_disconnect),
                             onTap: () {
@@ -100,8 +100,8 @@ class VpnConnectedStatusWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                               cancelSVG,
-                              height: screenHeightRatio(24),
-                              width: screenWidthRatio(24),
+                              height: screenHeightRatio(24, context),
+                              width: screenWidthRatio(24, context),
                             ),
                             title: Text(Languages.of(context)!.general_cancel),
                             onTap: () {
@@ -109,7 +109,7 @@ class VpnConnectedStatusWidget extends StatelessWidget {
                             },
                           ),
                           SizedBox(
-                            height: screenHeightRatio(8),
+                            height: screenHeightRatio(8, context),
                           )
                         ],
                       );
@@ -118,18 +118,18 @@ class VpnConnectedStatusWidget extends StatelessWidget {
               color: gold,
             )),
         SizedBox(
-          height: screenHeightRatio(35),
+          height: screenHeightRatio(35, context),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               connectedSVG,
-              height: screenHeightRatio(24),
-              width: screenWidthRatio(21),
+              height: screenHeightRatio(24, context),
+              width: screenWidthRatio(21, context),
             ),
             SizedBox(
-              width: screenWidthRatio(8),
+              width: screenWidthRatio(8, context),
             ),
             Text(
               Languages.of(context)!.home_connected,

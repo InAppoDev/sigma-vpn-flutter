@@ -20,11 +20,11 @@ class ErrorStatusWidget extends StatelessWidget {
           children: [
             SvgPicture.asset(
               pinSVG,
-              height: screenHeightRatio(14),
-              width: screenWidthRatio(10),
+              height: screenHeightRatio(14, context),
+              width: screenWidthRatio(10, context),
             ),
             SizedBox(
-              height: screenHeightRatio(5),
+              height: screenHeightRatio(5, context),
             ),
             Text(
               "IP: İstanbul(Turkey)",
@@ -33,18 +33,18 @@ class ErrorStatusWidget extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: screenHeightRatio(73),
+          height: screenHeightRatio(73, context),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               disconnectSVG,
-              height: screenHeightRatio(24),
-              width: screenWidthRatio(21),
+              height: screenHeightRatio(24, context),
+              width: screenWidthRatio(21, context),
             ),
             SizedBox(
-              width: screenWidthRatio(8),
+              width: screenWidthRatio(8, context),
             ),
             Text(
               Languages.of(context)!.home_disconnected,

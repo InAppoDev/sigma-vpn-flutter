@@ -19,28 +19,29 @@ class _ConnectedStatusWidgetState extends State<ConnectedStatusWidget> {
     return Column(
       children: [
         SizedBox(
-          height: screenHeightRatio(14),
+          height: screenHeightRatio(14, context),
         ),
         CupertinoButton(
-            child: SvgPicture.asset(
-              openButtonSVG,
-              height: screenHeightRatio(196),
-              width: screenWidthRatio(196),
-            ),
-            onPressed: widget.onPressed),
+          onPressed: widget.onPressed,
+          child: SvgPicture.asset(
+            openButtonSVG,
+            height: screenHeightRatio(196, context),
+            width: screenWidthRatio(196, context),
+          ),
+        ),
         SizedBox(
-          height: screenHeightRatio(73),
+          height: screenHeightRatio(73, context),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               disconnectSVG,
-              height: screenHeightRatio(24),
-              width: screenWidthRatio(21),
+              height: screenHeightRatio(24, context),
+              width: screenWidthRatio(21, context),
             ),
             SizedBox(
-              width: screenWidthRatio(8),
+              width: screenWidthRatio(8, context),
             ),
             Text(
               Languages.of(context)!.home_disconnected,

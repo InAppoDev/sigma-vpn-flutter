@@ -14,8 +14,10 @@ class AboutUsPage extends StatefulWidget {
   State<AboutUsPage> createState() => _AboutUsPageState();
 }
 
-var terms = InitializeRemoteConfig.getTermsContent()[Get.deviceLocale!.countryCode == "tr" ? 0 : 1];
-var privacy = InitializeRemoteConfig.getPrivacyPolicyContent()[Get.deviceLocale!.countryCode == "tr" ? 0 : 1];
+var terms = InitializeRemoteConfig.getTermsContent()[
+    Get.deviceLocale!.countryCode == "tr" ? 0 : 1];
+var privacy = InitializeRemoteConfig.getPrivacyPolicyContent()[
+    Get.deviceLocale!.countryCode == "tr" ? 0 : 1];
 
 PageController _pageController = PageController();
 int pageNumber = 0;
@@ -32,18 +34,16 @@ class _AboutUsPageState extends State<AboutUsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (canPop) async {
         setState(() {
-          pageNumber=0;
+          pageNumber = 0;
         });
         _pageController.jumpToPage(0);
-        // Navigator.pop(context);
-        return false;
       },
       child: Scaffold(
-          backgroundColor: pageNumber ==0? secondaryColor:white,
-
+          backgroundColor: pageNumber == 0 ? secondaryColor : white,
           appBar: AppBar(
             backgroundColor: secondaryColor,
             title: Text(Languages.of(context)!.drawer_about),
@@ -57,7 +57,10 @@ class _AboutUsPageState extends State<AboutUsPage> {
                       ? _pageController.jumpToPage(0)
                       : Navigator.pop(context);
                 },
-                child: const Icon(Icons.arrow_back_ios,color: white,)),
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  color: white,
+                )),
           ),
           body: PageView.builder(
             controller: _pageController,
@@ -73,53 +76,67 @@ class _AboutUsPageState extends State<AboutUsPage> {
                   ? Column(
                       children: [
                         SizedBox(
-                          height: screenHeightRatio(36),
+                          height: screenHeightRatio(36, context),
                         ),
-                        Image.asset("assets/ic_about_logo.png",height: 150,width: 150,),
+                        Image.asset(
+                          "assets/ic_about_logo.png",
+                          height: 150,
+                          width: 150,
+                        ),
                         SizedBox(
-                          height: screenHeightRatio(8),
+                          height: screenHeightRatio(8, context),
                         ),
                         Text(
                           "SIGMA VPN",
                           style: wRegularS24White,
                         ),
                         SizedBox(
-                          height: screenHeightRatio(16),
+                          height: screenHeightRatio(16, context),
                         ),
-                        const Divider(color: white,thickness: 0.3,),
-
+                        const Divider(
+                          color: white,
+                          thickness: 0.3,
+                        ),
                         ListTile(
-                          title: Text(Languages.of(context)!.drawer_terms,style:wRegularS14White),
-                          onTap: () {
-                            _pageController.jumpToPage(1);
-                            selectedQuestion=0;
-                            setState(() {});
-                          },
-                            trailing:const Icon(Icons.arrow_forward_ios,color:white)
-
+                            title: Text(Languages.of(context)!.drawer_terms,
+                                style: wRegularS14White),
+                            onTap: () {
+                              _pageController.jumpToPage(1);
+                              selectedQuestion = 0;
+                              setState(() {});
+                            },
+                            trailing: const Icon(Icons.arrow_forward_ios,
+                                color: white)),
+                        const Divider(
+                          color: white,
+                          thickness: 0.3,
                         ),
-                        const Divider(color: white,thickness: 0.3,),
-
-
                         ListTile(
-                          title: Text(Languages.of(context)!.drawer_privacy,style:wRegularS14White),
-                          onTap: () {
-                            _pageController.jumpToPage(1);
-                            selectedQuestion=1;
-                            setState(() {});
-                          },
-                            trailing:const Icon(Icons.arrow_forward_ios,color: white ,)
+                            title: Text(Languages.of(context)!.drawer_privacy,
+                                style: wRegularS14White),
+                            onTap: () {
+                              _pageController.jumpToPage(1);
+                              selectedQuestion = 1;
+                              setState(() {});
+                            },
+                            trailing: const Icon(
+                              Icons.arrow_forward_ios,
+                              color: white,
+                            )),
+                        const Divider(
+                          color: white,
+                          thickness: 0.3,
                         ),
-                        const Divider(color: white,thickness: 0.3,),
-
                       ],
                     )
                   : ListTile(
                       title: ListView(
                         children: [
-                              Html(
-                              data: selectedQuestion == 0 ? terms["value"]:privacy["value"]),
-                            ],
+                          Html(
+                              data: selectedQuestion == 0
+                                  ? terms["value"]
+                                  : privacy["value"]),
+                        ],
                       ),
                     );
             },
