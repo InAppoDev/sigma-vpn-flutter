@@ -9,8 +9,8 @@ import 'package:sigmavpnflutter/core/theme/svg_paths.dart';
 import 'package:sigmavpnflutter/core/theme/text_styles.dart';
 import 'package:share_plus/share_plus.dart';
 
-class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer({Key? key}) : super(key: key);
+class NavigationDrawerWidget extends StatelessWidget {
+  const NavigationDrawerWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -44,7 +45,8 @@ class _VpnPageState extends State<VpnPage> {
   bool isConnected = false;
 
   late Future<List<FirebaseFile>> futureFiles;
-  final GlobalKey<ScaffoldState> _scaffoldKey =   GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     InitializeRemoteConfig.init();
@@ -55,17 +57,19 @@ class _VpnPageState extends State<VpnPage> {
       onVpnStatusChanged: (data) {
         status = data;
 
-        differenceIn = double.parse(status!.byteIn.toString()) -
-            double.parse(firstStatusIn!.byteIn.toString());
+        if(status != null){
+          differenceIn = double.parse(status!.byteIn.toString()) -
+              double.parse(firstStatusIn!.byteIn.toString());
 
-        differenceOut = double.parse(status!.byteOut.toString()) -
-            double.parse(firstStatusOut!.byteOut.toString());
+          differenceOut = double.parse(status!.byteOut.toString()) -
+              double.parse(firstStatusOut!.byteOut.toString());
 
-        setState(() {
-          // status = data;
-          firstStatusIn = status;
-          firstStatusOut = status;
-        });
+          setState(() {
+            // status = data;
+            firstStatusIn = status;
+            firstStatusOut = status;
+          });
+        }
       },
       onVpnStageChanged: (data, raw) {
         setState(() {
@@ -95,7 +99,7 @@ class _VpnPageState extends State<VpnPage> {
     super.initState();
   }
 
-  Future<void> initPlatformState({String serverName=""}) async {
+  Future<void> initPlatformState({String serverName = ""}) async {
     engine.connect(config, serverName,
         username: FirebaseApi.defaultVpnUsername,
         password: FirebaseApi.defaultVpnPassword,
@@ -109,13 +113,12 @@ class _VpnPageState extends State<VpnPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (didPop) {},
       child: Scaffold(
         key: _scaffoldKey,
-        drawer: const NavigationDrawer(),
+        drawer: const NavigationDrawerWidget(),
         resizeToAvoidBottomInset: false,
         backgroundColor: secondaryColor,
         appBar: AppBar(
@@ -125,11 +128,12 @@ class _VpnPageState extends State<VpnPage> {
           title: RichText(
             text: TextSpan(
               text: Languages.of(context)!.home_title_1,
-              style: wRegularS22primary,
+              // style: wRegularS22primary,
               children: [
                 TextSpan(
                     text: Languages.of(context)!.home_title_2,
-                    style: wBoldS22White),
+                    // style: wBoldS22White
+            ),
               ],
             ),
           ),
@@ -152,85 +156,82 @@ class _VpnPageState extends State<VpnPage> {
                 height: screenHeightRatio(60),
               ),
 
-              if (stage == VPNStage.disconnected ||
-                  stage == VPNStage.denied ||
-                  stage == VPNStage.error) ...[
-                FutureBuilder<List<FirebaseFile>>(
-                    future: futureFiles,
-                    builder: (context, snapshot) {
-                      switch (snapshot.connectionState) {
-                        case ConnectionState.waiting:
-                          return const WaitingStatusWidget();
-                        default:
-                          if (snapshot.hasError) {
-                            return  EmptyStateWidget(
-                              engine: engine,
-                              status: Languages.of(context)!.home_disconnecting,
-                            );
-                          } else {
-                            final files = snapshot.data!;
-                            return ConnectedStatusWidget(
-                              onPressed: () async {
-                                var randomNumber = random.nextInt(files.length);
-                                setState(() {
-                                  serverName =
-                                      InitializeRemoteConfig.getServerName(
-                                          randomNumber);
-                                });
-                                UserPreferences.setServerName(serverName);
-                                config = await FirebaseApi.downloadFile(
-                                    files[randomNumber].ref);
-                                await initPlatformState(serverName:serverName);
-                              },
-                            );
-                          }
-                      }
-                    }),
-              ] else if (stage == VPNStage.connecting ||
-                  stage == VPNStage.tcp_connect ||
-                  stage == VPNStage.udp_connect ||
-                  stage == VPNStage.assign_ip ||
-                  stage == VPNStage.vpn_generate_config ||
-                  stage == VPNStage.wait_connection ||
-                  stage == VPNStage.authenticating ||
-                  (Platform.isAndroid &&
-                      stage == VPNStage.unknown &&
-                      isConnected == false)) ...[
-                EmptyStateWidget(
-                  engine: engine,
-                  status: Languages.of(context)!.home_connection_message,
-                ),
-              ] else if (stage == VPNStage.disconnecting ||
-                  (Platform.isAndroid &&
-                      stage == VPNStage.unknown &&
-                      isConnected == true)) ...[
-                EmptyStateWidget(
-                  engine: engine,
-                  status: Languages.of(context)!.home_disconnecting,
-                ),
-              ] else if (stage == VPNStage.connected) ...[
-                VpnConnectedStatusWidget(
-                    serverName: serverName, engine: engine),
-              ],
+                if (stage == VPNStage.disconnected ||
+                    stage == VPNStage.denied ||
+                    stage == VPNStage.error) ...[
+                  FutureBuilder<List<FirebaseFile>>(
+                      future: futureFiles,
+                      builder: (context, snapshot) {
+                        switch (snapshot.connectionState) {
+                          case ConnectionState.waiting:
+                            return const WaitingStatusWidget();
+                          default:
+                            if (snapshot.hasError) {
+                              return EmptyStateWidget(
+                                engine: engine,
+                                status: Languages.of(context)!.home_disconnecting,
+                              );
+                            } else {
+                              final files = snapshot.data!;
+                              return ConnectedStatusWidget(
+                                onPressed: () async {
+                                  var randomNumber = random.nextInt(files.length);
+                                  setState(() {
+                                    serverName =
+                                        InitializeRemoteConfig.getServerName(
+                                            randomNumber);
+                                  });
+                                  UserPreferences.setServerName(serverName);
+                                  config = await FirebaseApi.downloadFile(
+                                      files[randomNumber].ref);
+                                  await initPlatformState(serverName: serverName);
+                                },
+                              );
+                            }
+                        }
+                      }),
+                ] else if (stage == VPNStage.connecting ||
+                    stage == VPNStage.tcp_connect ||
+                    stage == VPNStage.udp_connect ||
+                    stage == VPNStage.assign_ip ||
+                    stage == VPNStage.vpn_generate_config ||
+                    stage == VPNStage.wait_connection ||
+                    stage == VPNStage.authenticating ||
+                    (Platform.isAndroid &&
+                        stage == VPNStage.unknown &&
+                        isConnected == false)) ...[
+                  EmptyStateWidget(
+                    engine: engine,
+                    status: Languages.of(context)!.home_connection_message,
+                  ),
+                ] else if (stage == VPNStage.disconnecting ||
+                    (Platform.isAndroid &&
+                        stage == VPNStage.unknown &&
+                        isConnected == true)) ...[
+                  EmptyStateWidget(
+                    engine: engine,
+                    status: Languages.of(context)!.home_disconnecting,
+                  ),
+                ] else if (stage == VPNStage.connected) ...[
+                  VpnConnectedStatusWidget(
+                      serverName: serverName, engine: engine),
+                ],
 
-              // if (Platform.isAndroid)
-              //   TextButton(
-              //     child: Text(_granted ? "Granted" : "Request Permission"),
-              //     onPressed: () {
-              //       engine. ().then((value) {
-              //         setState(() {
-              //           _granted = value;
-              //         });
-              //       });
-              //     },
-              //   ),
-            ],
+                // if (Platform.isAndroid)
+                //   TextButton(
+                //     child: Text(_granted ? "Granted" : "Request Permission"),
+                //     onPressed: () {
+                //       engine. ().then((value) {
+                //         setState(() {
+                //           _granted = value;
+                //         });
+                //       });
+                //     },
+                //   ),
+              ],
+            ),
           ),
         ),
-      ),
     );
   }
 }
-
-
-
